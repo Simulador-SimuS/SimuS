@@ -62,10 +62,7 @@ detalhes:
 <img src="Sapiens.png" name="SimuS" data-align="bottom" data-hspace="1" data-vsp
 ace="1" data-border="0" width="500" height="350" />  
 
-<!-- -->
-
 1.  **Formato das Instruções e Modos de Endereçamento**
-
   
 As instruções em linguagem de máquina do processador Sapiens podem ter
 um, dois ou três bytes (8 bits), conforme pode ser visto na Figura 2.
@@ -107,10 +104,7 @@ codificação para o modo de endereçamento é a seguinte:
 <img src="instrucao3.png" name="Formato das Instrucoes" data-align="bottom" data
 -hspace="1" data-vspace="1" data-border="0" width="250" height="175" />  
 
-<!-- -->
-
 1.  **Códigos de Condição**
-
   
 A seguir são apresentados os códigos de condição do processador Sapiens,
 ou seja, flags que indicam o resultado da última operação realizada pela
@@ -125,7 +119,6 @@ UAL.
     subtração; 0 – o resultado não deu nem ”vai-um” ou ”vem-um”.
 
 1.  **Descrição das Instruções**
-
 
 O conjunto original de instruções foi expandido para permitir uma maior
 capacidade de processamento. Todas as instruções originais do Neander-X
@@ -534,33 +527,26 @@ om: 0cm; padding-left: 0.19cm; padding-right: 0.19cm"><p><span lang="pt-BR">Para
 </tbody>
 </table>
 
-
-Foi definida uma linguagem de montagem para este processador obedecendo
-às regras usualmente encontradas nos sistemas comerciais e compatível
-com a sintaxe previamente utilizada no simulador Neanderwin. A sintaxe
+Foi definida uma linguagem de montagem para este processador obedecendo às regras usualmente encontradas nos sistemas comerciais e compatível com a sintaxe previamente utilizada no simulador Neanderwin. A sintaxe
 completa dos comandos do montador pode ser vista a seguir:
 
+- <span lang="pt-BR">Comentários:</span> <span lang="pt-BR">Os comentários são começados por </span><span lang="pt-BR">**ponto e vírgula (;)**</span><span lang="pt-BR"> e podem também ocorrer no final das linhas de instruções.</span>                                                                       
+                                                                                
+- <span lang="pt-BR">Rótulos:</span> <span lang="pt-BR">Um rótulo é um nome dado à próxima posição de memória. Deve ser seguido por </span><span lang="pt-BR">**dois pontos (:)**</span><span lang="pt-BR">.</span> 
+                                                                                
+- <span lang="pt-BR">ORG ender:</span>   <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**ORG**</span><span lang="pt-BR"> (origin) indica ao montador que a próxima instrução ou dados devem ser colocados na posição de memória indicada por</span><span lang="pt-BR"> *ender*</span><span lang="pt-BR">.</span> 
 
-- <span lang="pt-BR">Comentários</span> <span lang="pt-BR">Os comentários são começados por </span><span lang="pt-BR">**ponto e vírgula (;)**</span><span lang="pt-BR"> e podem também ocorrer no final das linhas de instruções.</span>                                                                       
-                                                                                
-- <span lang="pt-BR">Rótulos</span> <span lang="pt-BR">Um rótulo é um nome dado à próxima posição de memória. Deve ser seguido por </span><span lang="pt-BR">**dois pontos (:)**</span><span lang="pt-BR">.</span>         
-                                                                                
-- <span lang="pt-BR">ORG ender</span>   <span lang="pt-BR">A di
-retiva </span><span lang="pt-BR">**ORG**</span><span lang="pt-BR"> (origin) indi ca ao montador que a próxima instrução ou dados devem ser colocados na posição de memória indicada por</span><span lang="pt-BR"> *ender*</span><span lang="pt-BR">.</span>                                                                      
+- <span lang="pt-BR">var EQU imed:</span> <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**EQU**</span><span lang="pt-BR"> (equate) associa um nome (rótulo) a um certo valor. Esse comando é freqüentemente usado para especificar variáveis que são posicionadas em um endereço específico de memória. Por exemplo, para posicionar a variável X no endereço 100 use: X EQU 100.</span>
 
-- <span lang="pt-BR">var EQU imed</span> <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**EQU**</span><span lang="pt-BR"> (equate) associa um nome (rótulo) a um certo valor. Esse comando é freqüentemente usado para especificar variáveis que são posicionadas em um endereço específico de memória. Por exemplo, para posicionar a variável X no endereço 100 use: X EQU 100.</span> 
-- <span lang="pt-BR">END ender</span>  <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**END**</span><span lang="pt-BR"> indica que o programa fonte acabou. O operando </span><span lang="pt-BR">*ender*</span><span lang="pt-BR"> é usado para pré-carregar o PC com o endereço inicial de execução do programa.</span>                                                             
-- <span lang="pt-BR">DS imed</span> <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**DS**</span><span lang="pt-BR"> (define storage) reserva um número de palavras na memória definido pelo valor </span><span lang="pt-BR">*imed*</span><span lang="pt-BR">.</span>                              
+- <span lang="pt-BR">END ender:</span>  <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**END**</span><span lang="pt-BR"> indica que o programa fonte acabou. O operando </span><span lang="pt-BR">*ender*</span><span lang="pt-BR"> é usado para pré-carregar o PC com o endereço inicial de execução do programa.</span>                                                             
+- <span lang="pt-BR">DS imed:</span> <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**DS**</span><span lang="pt-BR"> (define storage) reserva um número de palavras na memória definido pelo valor </span><span lang="pt-BR">*imed*</span><span lang="pt-BR">.</span>                              
                                                                                 
-- <span lang="pt-BR">DB imed1, imed2, imed3 ...</span>  <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**DB**</span><span lang="pt-BR"> (define byte) carrega nesta palavra de memória e nas seguintes o(s) valor(es) de 8bits definido(s) pelo(s) operando(s) </span><span lang="pt-BR">*imed1, imed2, imed3*</span><
-span lang="pt-BR"> ...</span>                                                   
+- <span lang="pt-BR">DB imed1, imed2, imed3 ...:</span>  <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**DB**</span><span lang="pt-BR"> (define byte) carrega nesta palavra de memória e nas seguintes o(s) valor(es) de 8bits definido(s) pelo(s) operando(s) </span><span lang="pt-BR">*imed1, imed2, imed3*</span><span lang="pt-BR"> ...</span>                                                   
 
-- <span lang="pt-BR">DB imed1, imed2, imed3 ...</span>  <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**DB**</span><span lang="pt-BR"> (define word) carrega nesta palavra de memória e nas seguintes o(s) valor(es) de 16 bits definido(s) pelo(s) operando(s) </span><span lang="pt-BR">*imed1, imed2, imed3*</span
-><span lang="pt-BR"> ...</span>                                                 
-  
-- <span lang="pt-BR">STR “cadeia de caracteres”</span> | <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**STR**</span><span lang="pt-BR"> (define string) carrega nesta palavra de memória e nas seguintes o(s) valor(es) o código ASCII correspondente aos caracteres da cadeia entre aspas. </span>              
+- <span lang="pt-BR">DW imed1, imed2, imed3 ...:</span>  <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**DW**</span><span lang="pt-BR"> (define word) carrega nesta palavra de memória e nas seguintes o(s) valor(es) de 16 bits definido(s) pelo(s) operando(s) </span><span lang="pt-BR">*imed1, imed2, imed3*</span><span lang="pt-BR"> ...</span>
+
+- <span lang="pt-BR">STR “cadeia de caracteres”:</span> | <span lang="pt-BR">A diretiva </span><span lang="pt-BR">**STR**</span><span lang="pt-BR"> (define string) carrega nesta palavra de memória e nas seguintes o(s) valor(es) o código ASCII correspondente aos caracteres da cadeia entre aspas. </span>              
                                                                                 
-  
 Na maioria são mnemônicos e comandos com sintaxe simplificada e de fácil utilização. A seguir um exemplo de programa em linguagem de montagem para o processador Sapiens:
  
 <table width="450" data-cellpadding="3" data-cellspacing="0">
@@ -604,9 +590,7 @@ span></p>
 </tbody>
 </table>
 
-
 1.  **Simulando operações de E/S usando a instrução TRAP**
-
 
 No sentido de ampliar e facilitar a capacidade de realizar operações de
 E/S introduzimos um artifício que é a utilização da instrução TRAP para
@@ -647,8 +631,6 @@ suportar inicialmente as seguintes operações:
     endereço com a variável com a semente inicial.
 
 1.  **A Interface de Usuário do Simulador SimuS**
-
- 
 
 Mantivemos a interface básica do simulador do Neanderwin, acrescentando
 mais algumas funcionalidades e agora destacando os módulos de E/S, que
@@ -723,8 +705,6 @@ incluímos um conversor de bases, que é muito mais simples.
 
 1.  **Referências**
 
- 
-
 \[1\] G. P. Silva, J. A. S. Borges "SimuS - Um Simulador Para o Ensino
 de Arquitetura de Computadores". WEAC, 2016.
 
@@ -734,63 +714,21 @@ para uma arquitetura do tipo acumulador”. WEAC, 2006.
 \[3\] R. F. Weber, Fundamentos de Arquitetura de Computadores. 2. Ed.
 Porto Alegre: Instituto de Informática da UFRGS: Sagra Luzzatto, 2001.
 
-1.  **Download**
-
-  
-
-A seguir a versão executável do programa SimuS, com versões para Windows
-e Linux, com 32 e 64 bits, pode ser baixada no repositório
-[Sourceforge](https://sourceforge.net/projects/simus/files).
-
-1.  **E-book**
-
-Este mini-livro eletronico apresenta alguns exemplos de uso em linguagem
-de montagem sobre o SimuS:
-
-[SimuS: Simulador para Arquitetura de
-Computadores](https://goo.gl/cSH6rU)
-
 1.  **Autores**
-
   
-
-  Os autores são pesquisadores e professores da UFRJ e podem ser
-contactados pelo endereço a seguir.
-
-  
+  Os autores são pesquisadores e professores da UFRJ e podem ser contactados pelo endereço a seguir.
 
  José Antônio Borges  (antonio2 at nce dot ufrj dot br)
 
-  
-
  Gabriel P. Silva ( gabriel at dcc dot ufrj dot br)
 
-  
-
-<div class="descr">
-
-[<img src="ChapadaVeadeiros.jpg" style="border: 0px; width: 219px; height: 147px
-;" alt="Chapada dos Veadeiros" />](ChapadaVeadeiros.jpg)
-
-<div style="text-align: left;">
-
-Chapada dos Veadeiros - GO
-
 </div>
 
 </div>
 
-</div>
+Última atualização: 08.Ago.2023
 
 </div>
-
-Last  Updated: 08.Ago.2017
-
-</div>
-
-</div>
-
-<div class="clearer">
 
 </div>
 
