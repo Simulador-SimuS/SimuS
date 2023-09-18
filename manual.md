@@ -59,8 +59,7 @@ detalhes:
     deslocamento do registrador, soma e subtração com vai-um/vem, entre
     outras.
 
-<img src="Sapiens.png" name="SimuS" data-align="bottom" data-hspace="1" data-vsp
-ace="1" data-border="0" width="500" height="350" />  
+<img src="Sapiens.png" name="SimuS" data-align="bottom" data-hspace="1" data-vspace="1" data-border="0" width="500" height="350" />  
 
 1.  **Formato das Instruções e Modos de Endereçamento**
   
@@ -101,8 +100,7 @@ codificação para o modo de endereçamento é a seguinte:
     instrução. A única instrução que utiliza este modo é a LDS (Load
     Stack Pointer).
 
-<img src="instrucao3.png" name="Formato das Instrucoes" data-align="bottom" data
--hspace="1" data-vspace="1" data-border="0" width="250" height="175" />  
+<img src="instrucao3.png" name="Formato das Instrucoes" data-align="bottom" data-hspace="1" data-vspace="1" data-border="0" width="250" height="175" />  
 
 1.  **Códigos de Condição**
   
