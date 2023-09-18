@@ -174,8 +174,7 @@ os respectivos códigos de operação.
 <tr class="header">
 <th width="66" height="1" style="border: 1px solid #00000a; padding-top: 0cm; pa
 dding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0.19cm"><p><strong><span
- lang="pt-BR"><span style="font-style: normal">Mnemônico</span></span></strong><
-/p></th>
+ lang="pt-BR"><span style="font-style: normal">Mnemônico</span></span></strong></p></th>
 <th width="52" style="border: 1px solid #00000a; padding-top: 0cm; padding-botto
 m: 0cm; padding-left: 0.19cm; padding-right: 0.19cm"><p><strong><span lang="pt-B
 R"><span style="font-style: normal">Código</span></span></strong></p></th>
