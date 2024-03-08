@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Building From Source
 
-SimuS is supported on Windows, linux and RaspberryPi. For each platform, there will be instructions below.
+SimuS is supported on Windows, Linux and RaspberryPi. For each platform, there will be instructions below.
 FPC 3.0.4 and Lazarus 1.8 or greater is needed.
 
 Windows:
@@ -54,7 +54,7 @@ curl -L http://www.getlazarus.org/download/?platform=linux -o setup.sh
 
 ### Installing From Binaries
 
-Binaries are available on [Releases](https://github.com/sottam/simus/releases) Section.
+Binaries are available on [Releases](https://github.com/Simulador-SimuS/SimuS/releases) Section.
 1. Download the one that matches your platform.
 2. Setup install or unzip the file
 3. SimuS is ready for use!
@@ -69,12 +69,11 @@ Binaries are available on [Releases](https://github.com/sottam/simus/releases) S
 
 ## Authors
 
-* **Gabriel P. Silva** 
+* [**Gabriel P. Silva**](https://github.com/gpsilva2003)
 * **José Antonio Borges**
 * [**Alonso Matos do Amparo Neto**](https://github.com/sottam)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 
