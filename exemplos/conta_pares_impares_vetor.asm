@@ -1,3 +1,9 @@
+;-------------------------------
+; Programa: Conta os elementos pares e impares de um vetor
+; Autor: Gabriel P. Silva
+; Data: 08.03.2024
+;------------------------------
+
 ORG 100
 
 ; Declaração das variáveis do programa principal
@@ -43,6 +49,9 @@ TESTE:
         LDA     END_VETOR
         ADD     #1
         STA     END_VETOR
+        LDA     END_VETOR+1
+        ADC     #0
+        STA     END_VETOR+1
         LDA     TAM_VETOR
         SUB     CONT           
         JP      INICIO

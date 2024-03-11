@@ -1,5 +1,5 @@
 //
-//    Copyright 2016 Gabriel P. Silva and José Antonio S. Borges
+//    Copyright 2016-2024 Gabriel P. Silva and José Antonio S. Borges
 //
 //    This file is part of simulator SimuS.
 //

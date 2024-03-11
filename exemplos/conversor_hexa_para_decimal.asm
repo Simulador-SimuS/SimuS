@@ -1,24 +1,30 @@
 ; --------------------------------------------------------
-; Programa: Converte números hexadecimais para decimal (entre 00 e 99) 
+; Programa: Converte números hexadecimais para decimal
+; (simplificada, para valores entre 00 e 99)
 ; Autor: Gabriel P. Silva
-; Data: 2016
+; Data: 08.03.2024
 ;----------------------------------------------------------
 ORG  100
-VALOR:   DS   1    ;
-MOSTRA:  DS   1    ;
+VALOR:   DS   1      ;
+MOSTRA:  DS   1      ;
+STATUS   EQU  1      ;
+VISOR    EQU  0      ;
 
 ORG  0
-MAIN:    IN   0      ; ACC = Chaves
-         STA  VALOR  ;
-         STA  MOSTRA ; 
-LACO:    SUB  #10    ; 
-         JN   SAIDA  ;
-         STA  VALOR  ;
+INICIO:  IN   STATUS ; Verifica se dado está disponível
+         OR   #0     ;
+         JZ   INICIO
+MAIN:    IN   0      ; Lê o valor das chaves para acumulador
+         STA  MOSTRA ; Armazena o valor lido
+LACO:    SUB  #10    ; Se for menor que 10
+         JN   SAIDA  ; não precisa converter
+         STA  VALOR  ; Armazena valor auxiliar
          LDA  #6     ;
-         ADD  MOSTRA ;
-         STA  MOSTRA ;
+         ADD  MOSTRA ; Incrementa de 6 a cada 10 unidades
+         STA  MOSTRA ; (10 -->16)
          LDA  VALOR  ;
          JMP  LACO   ;
 SAIDA:   LDA  MOSTRA ;
-         OUT   0     ;
-         HLT         ;
+         OUT  VISOR  ; Mostra no visor
+         HLT         ; Termina a execução
+END     INICIO       ; Endereço inicial de execução

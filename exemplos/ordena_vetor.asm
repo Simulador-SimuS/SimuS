@@ -1,44 +1,46 @@
 ;---------------------------------------------------
-; Programa: Ordena um Vetor 
+; Programa: Ordena um vetor
 ; Autor: Thales de Freitas
-; Data: 02/05/16
+; Data: 08.03.2024
 ;---------------------------------------------------
 	
-ORG 100
-PT_I:     DW X
-PT_J:     DW X+1
+ORG 0
+PT_I:     DW 0
+PT_J:     DW 0
 I:        DB 0
 J:        DS 1
 TMP:      DS 1
-X:        DB 6, 2, 20, 2, 10, 5, 60, 4, 8, 0FFH
+X:        DB 88, 2, 20, 2, 10, 5, 60, 4, 8, 6
+TAM_1:     DB 9
+PT_X:     DW X
 
-ORG 0 
-        JMP INICIO_I
-FOR_I: 	
+ORG 100 
+FOR_I:
         LDA I
-        ADD #1 
+        ADD #1
         STA I       ;  i = i + 1
-        LDA #8  
-        SUB I       ;  i <= 8 ?
-        JN  FIM     ;  Se falso termina
+        LDA TAM_1   ;
+        SUB #1      ;
+        SUB I       ;  i > TAM-2 ?
+        JN  FIM     ;  Se verdadeiro termina
 INICIO_I:
-        LDA #X
-	ADD I 
+        LDA PT_X    ; Endereço inicial de X
+	ADD I       ;
 	STA PT_I    ;  PT_I = &X[i]
         LDA I       ;  j = i + 1
-        ADD #1
+        ADD #1      ;
         STA J
         JMP INICIO_J
 FOR_J:   
 	LDA J
         ADD #1 
         STA J        ; j = j + 1
-        LDA #9       ; j < = 9?
-        SUB J        ; Se falso sai do laço
+        LDA TAM_1    ; j > TAM-1?
+        SUB J        ; Se verdadeiro sai do laço
         JN END_I
 INICIO_J:
-        LDA #X
-	ADD J 
+        LDA PT_X     ; Endereço inicial de X
+	ADD J
         STA PT_J     ; PT_J = &X[j]
 COMP:
 	LDA @PT_I    ; 
@@ -57,4 +59,4 @@ END_I:
         JMP FOR_I
 FIM:
         HLT
-END 0
+END     INICIO_I

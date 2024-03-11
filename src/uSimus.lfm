@@ -1,10 +1,10 @@
 object formPrincipal: TformPrincipal
-  Left = 381
+  Left = 193
   Height = 750
-  Top = 212
+  Top = 210
   Width = 1024
   Caption = 'SimuS - Sapiens-8 Processor Simulator'
-  ClientHeight = 730
+  ClientHeight = 723
   ClientWidth = 1024
   Color = clBtnFace
   Constraints.MinHeight = 600
@@ -17,7 +17,7 @@ object formPrincipal: TformPrincipal
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.2.0'
+  LCLVersion = '2.2.6.0'
   Visible = True
   object BarButton: TPanel
     Left = 0
@@ -347,17 +347,17 @@ object formPrincipal: TformPrincipal
   end
   object EditorEPainelDeControle: TPanel
     Left = 0
-    Height = 702
+    Height = 695
     Top = 28
     Width = 769
     Align = alClient
     Caption = 'EditorEPainelDeControle'
-    ClientHeight = 702
+    ClientHeight = 695
     ClientWidth = 769
     TabOrder = 1
     object Codigo: TPageControl
       Left = 0
-      Height = 557
+      Height = 550
       Top = 144
       Width = 767
       ActivePage = Edicao
@@ -366,13 +366,13 @@ object formPrincipal: TformPrincipal
       TabOrder = 1
       object Edicao: TTabSheet
         Caption = 'Editing'
-        ClientHeight = 531
-        ClientWidth = 759
+        ClientHeight = 520
+        ClientWidth = 757
         inline SynEditor: TSynEdit
           Left = 0
-          Height = 533
+          Height = 522
           Top = 0
-          Width = 760
+          Width = 758
           Anchors = [akTop, akLeft, akRight, akBottom]
           Font.Height = -16
           Font.Name = 'Courier New'
@@ -876,14 +876,14 @@ object formPrincipal: TformPrincipal
       end
       object Compilacao: TTabSheet
         Caption = 'Compilation'
-        ClientHeight = 531
-        ClientWidth = 759
+        ClientHeight = 520
+        ClientWidth = 757
         ImageIndex = 1
         object m_listagem: TMemo
           Left = 0
-          Height = 533
+          Height = 522
           Top = 0
-          Width = 760
+          Width = 758
           Anchors = [akTop, akLeft, akRight, akBottom]
           Font.CharSet = ANSI_CHARSET
           Font.Color = clWindowText
@@ -899,15 +899,15 @@ object formPrincipal: TformPrincipal
       end
       object Execucao: TTabSheet
         Caption = 'Debugging'
-        ClientHeight = 531
-        ClientWidth = 759
+        ClientHeight = 520
+        ClientWidth = 757
         ImageIndex = 2
         object Splitter: TSplitter
           Cursor = crVSplit
           Left = 0
           Height = 2
           Top = 337
-          Width = 759
+          Width = 757
           Align = alTop
           ResizeAnchor = akTop
         end
@@ -915,7 +915,7 @@ object formPrincipal: TformPrincipal
           Left = 0
           Height = 337
           Top = 0
-          Width = 759
+          Width = 757
           Align = alTop
           Constraints.MinHeight = 200
           Font.CharSet = ANSI_CHARSET
@@ -931,12 +931,13 @@ object formPrincipal: TformPrincipal
           ScrollWidth = 685
           Style = lbOwnerDrawFixed
           TabOrder = 0
+          TopIndex = -1
         end
         object lb_dados: TListBox
           Left = 0
-          Height = 192
+          Height = 181
           Top = 339
-          Width = 759
+          Width = 757
           Align = alClient
           Color = clCream
           Constraints.MinHeight = 100
@@ -948,6 +949,7 @@ object formPrincipal: TformPrincipal
           ParentFont = False
           ScrollWidth = 685
           TabOrder = 1
+          TopIndex = -1
         end
       end
     end
@@ -3753,7 +3755,7 @@ object formPrincipal: TformPrincipal
       end
       object chave1: TLabel
         Left = 47
-        Height = 13
+        Height = 16
         Top = 58
         Width = 6
         Caption = '1'
@@ -3761,7 +3763,7 @@ object formPrincipal: TformPrincipal
       end
       object chave0: TLabel
         Left = 47
-        Height = 13
+        Height = 16
         Top = 79
         Width = 6
         Caption = '0'
@@ -3814,9 +3816,9 @@ object formPrincipal: TformPrincipal
       end
       object Pronto: TLabel
         Left = 5
-        Height = 13
+        Height = 16
         Top = 56
-        Width = 31
+        Width = 32
         Caption = 'Ready'
         ParentColor = False
       end
@@ -3998,9 +4000,9 @@ object formPrincipal: TformPrincipal
       end
       object cb_rapido: TCheckBox
         Left = 461
-        Height = 19
+        Height = 23
         Top = 89
-        Width = 40
+        Width = 47
         Caption = 'Fast'
         OnClick = cb_rapidoClick
         TabOrder = 13
@@ -4148,19 +4150,19 @@ object formPrincipal: TformPrincipal
   end
   object RegistradoresEMemoria: TPanel
     Left = 769
-    Height = 702
+    Height = 695
     Top = 28
     Width = 255
     Align = alRight
     Caption = 'RegistradoresEMemoria'
-    ClientHeight = 702
+    ClientHeight = 695
     ClientWidth = 255
     Constraints.MinWidth = 240
     TabOrder = 2
     object AlteraMemoria: TPanel
       Left = 1
       Height = 52
-      Top = 649
+      Top = 642
       Width = 253
       Align = alBottom
       ClientHeight = 52
@@ -4168,23 +4170,23 @@ object formPrincipal: TformPrincipal
       TabOrder = 0
       object l_endereco: TLabel
         Left = 6
-        Height = 13
+        Height = 16
         Top = 2
-        Width = 38
+        Width = 41
         Caption = 'Address'
         ParentColor = False
       end
       object l_novoValor: TLabel
         Left = 81
-        Height = 13
+        Height = 16
         Top = 2
-        Width = 51
+        Width = 54
         Caption = 'New value'
         ParentColor = False
       end
       object e_ender: TEdit
         Left = 6
-        Height = 21
+        Height = 33
         Top = 18
         Width = 49
         OnExit = e_enderExit
@@ -4211,7 +4213,7 @@ object formPrincipal: TformPrincipal
       end
       object e_valor: TEdit
         Left = 81
-        Height = 21
+        Height = 33
         Top = 18
         Width = 54
         OnExit = e_valorExit
@@ -4220,8 +4222,8 @@ object formPrincipal: TformPrincipal
       end
       object cb_hexa: TCheckBox
         Left = 152
-        Height = 19
-        Top = 0
+        Height = 23
+        Top = -4
         Width = 88
         Anchors = [akLeft, akRight, akBottom]
         Caption = 'Hex'
@@ -4251,18 +4253,18 @@ object formPrincipal: TformPrincipal
       end
       object l_instr: TLabel
         Left = 6
-        Height = 13
+        Height = 16
         Top = 8
-        Width = 52
+        Width = 61
         Alignment = taCenter
         Caption = 'Instruction:'
         ParentColor = False
       end
       object l_instrucao: TLabel
         Left = 74
-        Height = 24
+        Height = 27
         Top = 2
-        Width = 54
+        Width = 51
         Caption = 'NOPE'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4272,9 +4274,9 @@ object formPrincipal: TformPrincipal
       end
       object l_operInstrucao: TLabel
         Left = 131
-        Height = 24
+        Height = 27
         Top = 2
-        Width = 71
+        Width = 65
         Caption = '@AAAA'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4294,9 +4296,9 @@ object formPrincipal: TformPrincipal
       end
       object l_PC: TLabel
         Left = 74
-        Height = 24
+        Height = 27
         Top = 50
-        Width = 40
+        Width = 44
         Caption = '0000'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4306,9 +4308,9 @@ object formPrincipal: TformPrincipal
       end
       object l_ACC: TLabel
         Left = 74
-        Height = 24
+        Height = 27
         Top = 78
-        Width = 20
+        Width = 22
         Caption = '00'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4318,9 +4320,9 @@ object formPrincipal: TformPrincipal
       end
       object l_Z: TLabel
         Left = 202
-        Height = 24
+        Height = 27
         Top = 50
-        Width = 10
+        Width = 11
         Caption = '0'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4330,9 +4332,9 @@ object formPrincipal: TformPrincipal
       end
       object l_N: TLabel
         Left = 202
-        Height = 24
+        Height = 27
         Top = 78
-        Width = 10
+        Width = 11
         Caption = '0'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4342,9 +4344,9 @@ object formPrincipal: TformPrincipal
       end
       object l_SP: TLabel
         Left = 74
-        Height = 24
+        Height = 27
         Top = 106
-        Width = 40
+        Width = 44
         Caption = '0000'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4354,9 +4356,9 @@ object formPrincipal: TformPrincipal
       end
       object l_C: TLabel
         Left = 202
-        Height = 24
+        Height = 27
         Top = 108
-        Width = 10
+        Width = 11
         Caption = '0'
         Font.Color = clWindowText
         Font.Height = -19
@@ -4420,7 +4422,7 @@ object formPrincipal: TformPrincipal
     end
     object dumpMem: TListBox
       Left = 2
-      Height = 506
+      Height = 499
       Top = 144
       Width = 249
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -4431,7 +4433,7 @@ object formPrincipal: TformPrincipal
       Items.Strings = (
         ''
       )
-      ItemHeight = 17
+      ItemHeight = 24
       OnClick = dumpMemClick
       ParentFont = False
       ScrollWidth = 219
@@ -4439,7 +4441,7 @@ object formPrincipal: TformPrincipal
     end
   end
   object MainMenu: TMainMenu
-    left = 648
+    Left = 648
     object Arquivo1: TMenuItem
       Caption = 'File'
       object Novo1: TMenuItem
@@ -4537,31 +4539,31 @@ object formPrincipal: TformPrincipal
     Enabled = False
     Interval = 100
     OnTimer = TimerDeExecucaoTimer
-    left = 600
+    Left = 600
   end
   object OpenDialog1: TOpenDialog
     DefaultExt = '.asm'
     Filter = '*.asm|*.asm|Todos os arquivos|*.*'
     InitialDir = '.'
-    left = 328
+    Left = 328
   end
   object SaveDialog1: TSaveDialog
     DefaultExt = '.asm'
     Filter = '*.asm|*.asm|Todos os arquivos|*.*'
     InitialDir = '.'
-    left = 544
+    Left = 544
   end
   object SaveDialog2: TSaveDialog
     DefaultExt = '.hxf'
     Filter = '*.hxf|*.hxf'
     InitialDir = '.'
-    left = 472
+    Left = 472
   end
   object OpenDialog2: TOpenDialog
     DefaultExt = '.hxf'
     Filter = '*.hxf|*.hxf'
     InitialDir = '.'
-    left = 400
+    Left = 400
   end
   object Highlighter: TSynAnySyn
     Enabled = False
@@ -4618,7 +4620,7 @@ object formPrincipal: TformPrincipal
     Entity = False
     DollarVariables = False
     ActiveDot = False
-    left = 712
+    Left = 712
   end
   object SynCompletion: TSynCompletion
     ItemList.Strings = (
@@ -4672,8 +4674,8 @@ object formPrincipal: TformPrincipal
     ExecCommandID = ecSynCompletionExecute
     Editor = SynEditor
     ToggleReplaceWhole = False
-    left = 592
-    top = 256
+    Left = 592
+    Top = 256
   end
   object SynAutoComplete: TSynAutoComplete
     AutoCompleteList.Strings = (
@@ -4720,7 +4722,7 @@ object formPrincipal: TformPrincipal
     ShortCut = 8224
     ExecCommandID = ecSynAutoCompletionExecute
     Editor = SynEditor
-    left = 504
-    top = 224
+    Left = 504
+    Top = 224
   end
 end

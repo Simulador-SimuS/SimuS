@@ -201,7 +201,9 @@ msgid "Comments start with a semicolon."
 msgstr "Os comentários são começados por ponto e vírgula."
 
 #: resstring.spop
-msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
+#, fuzzy
+#| msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
+msgid "POP (pop from stack) copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
 msgstr "A instrução POP (pop from stack), traz para o acumulador o topo da pilha (8 bits). O SP é decrementado de 1."
 
 #: resstring.sporfavorpreenchaooperando
@@ -221,7 +223,9 @@ msgid "Pseudo-instruction does not permit immediate neither indirect"
 msgstr "Pseudo-instrução não permite imediato nem indireto"
 
 #: resstring.spush
-msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
+#, fuzzy
+#| msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
+msgid "PUSH (push to stack) copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
 msgstr "A instrução PUSH (push to stack), coloca o conteúdo do acumulador no topo da pilha. O SP é incrementado de 1."
 
 #: resstring.sret
@@ -237,7 +241,9 @@ msgid "SBC (subtract with carry) subtracts from the accumulator the contents of 
 msgstr "A instrução SBC (subtract with carry) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando, decrementando-o se o carry ligado."
 
 #: resstring.ssha
-msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
+#, fuzzy
+#| msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
+msgid "SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
 msgstr "A instrução SRA (shift right aritmético) desloca os bits do acumulador para a direita (ou seja, divide por 2). O bit 7 é mantido igual. O bit 0 (que seria perdido) é armazenado no Carry."
 
 #: resstring.sshl
@@ -596,6 +602,7 @@ msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
 #: tformprincipal.abrir1.caption
+msgctxt "tformprincipal.abrir1.caption"
 msgid "Open"
 msgstr "Abrir"
 
@@ -620,10 +627,15 @@ msgid "Programming Guide"
 msgstr "Tutor de programação"
 
 #: tformprincipal.breakpointbtn.hint
+#, fuzzy
+#| msgid ""
+#| "BreakPoint\n"
+#| "\n"
+#| "Select a line on debugging, then click here.\n"
 msgid ""
 "BreakPoint\n"
 "\n"
-"Select a line on debugging, then click here.\n"
+"Select a line on debugging, then click here."
 msgstr ""
 "BreakPoint\n"
 "\n"
@@ -710,6 +722,7 @@ msgid "1"
 msgstr "1"
 
 #: tformprincipal.colar1.caption
+msgctxt "tformprincipal.colar1.caption"
 msgid "Paste"
 msgstr "Colar"
 
@@ -718,11 +731,15 @@ msgid "Compilation"
 msgstr "Compilação"
 
 #: tformprincipal.compilar1.caption
+msgctxt "tformprincipal.compilar1.caption"
 msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.compilebtn.hint
-msgid "Compilar"
+#, fuzzy
+#| msgid "Compilar"
+msgctxt "tformprincipal.compilebtn.hint"
+msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.console1.caption
@@ -739,11 +756,15 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: tformprincipal.copybtn.hint
-msgid "Copiar seleção"
+#, fuzzy
+#| msgid "Copiar seleção"
+msgid "Copy selection"
 msgstr "Copiar seleção"
 
 #: tformprincipal.cutbtn.hint
-msgid "Cortar seleção"
+#, fuzzy
+#| msgid "Cortar seleção"
+msgid "Cut selection"
 msgstr "Cortar seleção"
 
 #: tformprincipal.desfazer1.caption
@@ -860,19 +881,29 @@ msgid "&?"
 msgstr "&?"
 
 #: tformprincipal.newbnt.hint
-msgid "Novo"
+#, fuzzy
+#| msgid "Novo"
+msgctxt "tformprincipal.newbnt.hint"
+msgid "New"
 msgstr "Novo"
 
 #: tformprincipal.novo1.caption
+msgctxt "tformprincipal.novo1.caption"
 msgid "New"
 msgstr "Novo"
 
 #: tformprincipal.openbtn.hint
-msgid "Abrir"
+#, fuzzy
+#| msgid "Abrir"
+msgctxt "tformprincipal.openbtn.hint"
+msgid "Open"
 msgstr "Abrir"
 
 #: tformprincipal.pastebtn.hint
-msgid "Colar"
+#, fuzzy
+#| msgid "Colar"
+msgctxt "tformprincipal.pastebtn.hint"
+msgid "Paste"
 msgstr "Colar"
 
 #: tformprincipal.programaotutorada1.caption
@@ -897,6 +928,7 @@ msgid "Exit"
 msgstr "Sair"
 
 #: tformprincipal.salvar1.caption
+msgctxt "tformprincipal.salvar1.caption"
 msgid "Save"
 msgstr "Salvar"
 
@@ -909,7 +941,10 @@ msgid "Dump Hex"
 msgstr "Descarregar Hexa"
 
 #: tformprincipal.savebtn.hint
-msgid "Salvar"
+#, fuzzy
+#| msgid "Salvar"
+msgctxt "tformprincipal.savebtn.hint"
+msgid "Save"
 msgstr "Salvar"
 
 #: tformprincipal.sobreoprograma1.caption
@@ -967,9 +1002,12 @@ msgid "#"
 msgstr "#"
 
 #: tformprincipal.tutorbtn.hint
-msgid "Tutor"
+#, fuzzy
+#| msgid "Tutor"
+msgid "Guide"
 msgstr "Tutor"
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr "Zerar memória"
+

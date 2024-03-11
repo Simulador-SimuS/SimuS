@@ -1,16 +1,17 @@
-; --------------------------------------------------------------------
-; Descrição: Rotina para imprimir uma cadeia de caracteres no banner 
+; ---------------------------------------------------------
+; Descrição: Rotina para imprimir uma cadeia de
+; caracteres no banner
 ; Parametros: O endereço da cadeia é passado na pilha
 ; Autor: Gabriel P. Silva
-; ---------------------------------------------------------------------
+; ---------------------------------------------------------
 ORG 300
 SP:    DW 0
 AUX:   DW 0
 PTR:   DW 0
 ;------------------------------------------------------
-; constantes de hardware
-CLEARB   equ 3
-BANNER   equ 2
+; Endereços de E/S
+CLEARB   EQU 3
+BANNER   EQU 2
 ;------------------------------------------------------
 ROTINA:
     STS     SP

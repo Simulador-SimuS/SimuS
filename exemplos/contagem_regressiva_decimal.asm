@@ -1,24 +1,30 @@
 ;---------------------------------------------------
 ; Programa: Contador descrente em decimal
 ; Autor: Gabriel P. Silva
-; Data: 2016
+; Data: 08.03.2023
 ;---------------------------------------------------
 
+ORG 100
+COUNT:   DS   1          ;  COUNT
+STATUS   EQU  1          ;
+CHAVES   EQU  0          ;
+VISOR    EQU  0          ;
+
 ORG  0
-MAIN:    IN   1          ; 
+MAIN:    IN   STATUS     ;
          ADD  #0         ;
          JZ   MAIN       ; Espera um valor nas chaves
-         IN   0          ; ACC = Chaves
+         IN   CHAVES     ; ACC = Chaves
          STA  COUNT      ;
 LOOP:    JSR  DECIMAL    ; VISOR = A
          LDA  COUNT      ; 
          SUB  #1         ;
          STA  COUNT      ; COUNT = ACC
-         JNZ  LOOP       ; 
-         JSR  DECIMAL    ; 
-FIM:     HLT             ;
-         END  0 
-COUNT:   DS   1          ;  COUNT
+         JSR  DECIMAL    ; Desvia para a subrotina de conversão
+         JNZ  LOOP       ;
+FIM:     HLT             ; Termina a execução
+         END  MAIN       ; Endereço inicial
+
 
 ORG 300
 VALOR:  DS 1
