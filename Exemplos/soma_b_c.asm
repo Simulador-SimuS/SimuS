@@ -2,6 +2,7 @@
 ; Programa: Soma A = B + C 
 ; Autor: Gabriel P. Silva
 ; Data: 2016
+; Arquivo: soma_b_c.asm
 ;---------------------------------------------------
 ORG  100
 
@@ -15,17 +16,3 @@ MAIN:    LDA  B     ; ACC = B
          STA  A     ; A = ACC
          OUT  0     ;
          HLT        ;  PARA
-
-
-
-        
- 
-
-
-
-
-
-
-
-
-
