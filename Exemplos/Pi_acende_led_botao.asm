@@ -1,5 +1,6 @@
 ;---------------------------------------------------
 ; Programa: Acende led com pressionamento de botao Wiring Pi
+; no Raspberry Pi
 ; Autor: Alonso Matos
 ; Data: 03.10.2017
 ;---------------------------------------------------
