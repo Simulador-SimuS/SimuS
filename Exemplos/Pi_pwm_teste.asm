@@ -1,5 +1,5 @@
 ;---------------------------------------------------
-; Programa: Testa PWM
+; Programa: Testa PWM no Raspberry Pi
 ; Autor: Alonso Matos
 ; Data: 30/08/2017
 ;---------------------------------------------------
