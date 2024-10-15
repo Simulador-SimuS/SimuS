@@ -1,5 +1,5 @@
 ;---------------------------------------------------
-; Programa: Pisca Led
+; Programa: Pisca Led no Raspberrry Pi
 ; Autor: José Antonio Borges
 ; Data: 09.08.2017
 ;---------------------------------------------------
