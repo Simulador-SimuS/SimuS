@@ -1,5 +1,5 @@
 ;------------------------------
-; Programa;
+; Programa para gerar onda PWM no Raspberry Pi
 ; Autor:
 ; Data:
 ;------------------------------
