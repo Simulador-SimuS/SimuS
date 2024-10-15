@@ -1,5 +1,5 @@
 ;---------------------------------------------------
-; Programa: Blink Led Wiring Pi
+; Programa: Blink Led Wiring Pi no Raspberry Pi
 ; Autor: Alonso Matos
 ; Data: 09.08.2017
 ;---------------------------------------------------
