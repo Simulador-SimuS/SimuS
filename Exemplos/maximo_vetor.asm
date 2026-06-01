@@ -1,44 +1,54 @@
-;--------------------------------------------------
+;---------------------------------------------------
 ; Programa: Determina o maior valor de um vetor
 ; Autor: Gabriel P. Silva e Antonio Borges
 ; Data: 12/08/2023
 ; Arquivo: maximo_vetor.asm
-;--------------------------------------------------
-ORG 100               ; Variáveis
-TAM:      DB    10    ; Número de elementos do vetor  
-IND:      DB    0     ; Indice do vetor
-MAXIND:   DB    0     ; Indice do maior elemento
-MAX:      DB    0     ; Valor do maior elemento
-PONTEIRO: DW    VETOR ; Endereço do elemento atual 
-; Vetor
-VETOR:    DB    11, 27, 31, 82, 23, 80, 127, -1, 47, 6
+;---------------------------------------------------
+; Percorre o vetor e mantém em MAX o maior valor
+; encontrado até o momento. Ao final exibe MAX.
+; Obs.: os valores são tratados como bytes sem sinal
+; (0 a 255). O valor -1 no vetor equivale a 0FFh=255.
+;---------------------------------------------------
+ORG 100
+TAM:      DB    10          ; Número de elementos
+IND:      DB    0           ; Índice atual
+MAXIND:   DB    0           ; Índice do maior elemento
+MAX:      DB    0           ; Maior valor encontrado
+PONTEIRO: DW    VETOR       ; Ponteiro para o elemento atual
+VETOR:    DB    11, 27, 31, 82, 23, 80, 127, 0FFh, 47, 6
 
-ORG 0                 ; Código
+ORG 0
 INICIO:
-    LDA  @PONTEIRO    ; Acumulador recebe vetor (0)
-    STA  MAX          ; MAX = VETOR(0)
+    LDA  @PONTEIRO      ; MAX = VETOR[0]
+    STA  MAX
+
 LACO:
-    LDA  IND          ; Carrega o indice no acumulador
-    ADD  #1           ; Incrementa de um
-    STA  IND          ; Salva na memória
-    SUB  TAM          ; Diminui do tamanho do vetor
-    JZ   FIM          ; Quando IND e TAM forem iguais termina
-    LDA  PONTEIRO     ; Carrega a parte baixa do ponteiro
-    ADD  #1           ; Incrementa de um
-    STA  PONTEIRO     ; Salva na memória
-    LDA  PONTEIRO+1   ; Incrementa a parte alta do ponteiro
-    ADC  #0           ; Se deu carray na soma anterior
-    STA  PONTEIRO+1   ; Salva na memória   
-    LDA  @PONTEIRO    ; Carrega VETOR(IND) no acumulador 
-    SUB  MAX          ; Diminui do valor máximo 
-    JN   LACO         ; Se negativo avança para o próximo
-    LDA  @PONTEIRO    ; Senão troca MAX por VETOR(IND) 
-    STA  MAX          ; MAX = VETOR(I)
-    LDA  IND          ; Carrega IND no acumulador 
-    STA  MAXIND       ; MAXIND = IND
-    JMP  LACO         ; Continua   
+    LDA  IND            ; IND = IND + 1
+    ADD  #1
+    STA  IND
+    SUB  TAM            ; IND = TAM ?
+    JZ   FIM            ; Se sim, termina
+
+    LDA  PONTEIRO       ; Avança o ponteiro
+    ADD  #1
+    STA  PONTEIRO
+    LDA  PONTEIRO+1
+    ADC  #0
+    STA  PONTEIRO+1
+
+    LDA  @PONTEIRO      ; ACC = VETOR[IND]
+    SUB  MAX            ; ACC - MAX
+    JN   LACO           ; Se ACC < MAX, não troca
+    JZ   LACO           ; Se ACC = MAX, não troca
+
+    LDA  @PONTEIRO      ; Se ACC > MAX: atualiza MAX
+    STA  MAX
+    LDA  IND
+    STA  MAXIND         ; Guarda também o índice do maior
+    JMP  LACO
+
 FIM:
     LDA  MAX
-    OUT  0            ; Mostra o valor maximo no visor 
+    OUT  0              ; Exibe o maior valor no visor
     HLT
-    END INICIO
+    END  INICIO

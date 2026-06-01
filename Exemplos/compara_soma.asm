@@ -7,8 +7,6 @@
 ;---------------------------------------------------
           ORG     0
 INICIO:
-          LDS     #FIM_PILHA   ; valor inicial do 
-                               ; apontador de pilha (SP)
           JSR     LE_VALOR     ; n1 = le_valor()
           STA     N1
           JSR     LE_VALOR     ; n2 = le_valor()
@@ -81,5 +79,4 @@ OPCAO:    DS      1
 CHAVES    EQU     0
 STATUS    EQU     1
 VISOR     EQU     0
-FIM_PILHA EQU     100H
           END     INICIO

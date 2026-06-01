@@ -8,7 +8,10 @@ VALOR:   DS   1    ;
 MOSTRA:  DS   1    ;
 
 ORG  0
-MAIN:    IN   0      ; ACC = Chaves
+MAIN:    IN   1
+         OR   #0
+         JZ   MAIN
+         IN   0      ; ACC = Chaves
          STA  VALOR  ;
          STA  MOSTRA ; 
 LACO:    SUB  #10    ; 

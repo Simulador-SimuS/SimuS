@@ -1,40 +1,46 @@
 ;---------------------------------------------------
-; Programa que soma os valores pares de um vetor
+; Programa: Soma os valores pares de um vetor
 ; Autor: Gabriel P. Silva e Antonio Borges
-; Data:  13/08/2023
+; Data: 13/08/2023
 ; Arquivo: soma_pares_vetor.asm
 ;---------------------------------------------------
-ORG 100          ; Variáveis
-I:      DB  0
-TAM:    DB  6 
-PARES:  DB  0
-PT:     DW  X
-X:      DB  6, 13, 8, 10, 9, 23
+; Percorre o vetor X e acumula em PARES a soma de
+; todos os elementos cujo bit 0 vale 0 (pares).
+;---------------------------------------------------
+ORG 100
+I:      DB  0           ; Índice atual
+TAM:    DB  6           ; Tamanho do vetor
+PARES:  DB  0           ; Soma dos elementos pares
+PT:     DW  X           ; Ponteiro móvel para o vetor
+X:      DB  6, 13, 8, 10, 9, 23   ; Vetor
 
-ORG 0            ; Código
-    LDA I  
-LACO:            
-    SUB  TAM     ; Repete até que I=6 
-    JZ   FIM    
-    LDA  @PT     ; Carrega o elemento no acumulador
-    AND  #1      ; Testa se é par (bit 0=0)
-    JNZ  SENAO
-    LDA  PARES   ; Se for, faz pares++    
-    ADD  #1
-    STA  PARES
-SENAO:           ; Endereço do elemento atual
-    LDA  PT      ; Calcula o endereço de X[I]
-    ADD  #1
-    STA  PT
-    LDA  PT+1
-    ADC  #0
-    STA  PT+1
-    LDA  I 
-    ADD  #1
-    STA  I
-    JMP  LACO    ; Volta ao inicio
-FIM:             ; Mostra no visor o total de pares
-    LDA  PARES
-    OUT  0       
-    HLT          ; Termina o programa
-    END  0
+ORG 0
+        LDA  I
+
+LACO:   SUB  TAM        ; I = TAM ? (usando subtração acumulada)
+        JZ   FIM        ; Se I = TAM, termina
+
+        LDA  @PT        ; Carrega o elemento atual
+        AND  #1         ; Testa bit 0
+        JNZ  SENAO      ; Se bit 0 = 1, é ímpar: pula
+
+        LDA  PARES      ; É par: acumula
+        ADD  #1
+        STA  PARES
+
+SENAO:  LDA  PT         ; Avança o ponteiro
+        ADD  #1
+        STA  PT
+        LDA  PT+1
+        ADC  #0
+        STA  PT+1
+
+        LDA  I          ; Incrementa o índice
+        ADD  #1
+        STA  I
+        JMP  LACO
+
+FIM:    LDA  PARES
+        OUT  0          ; Exibe o total de elementos pares
+        HLT
+        END  0

@@ -1,22 +1,29 @@
 ;---------------------------------------------------
-; Programa: Contagem regressiva
+; Programa: Contagem regressiva a partir de um valor
+;           lido do painel de chaves
 ; Autor: Gabriel P. Silva
 ; Data: 16.09.2003
+; Arquivo: contagem_regressiva.asm
 ;---------------------------------------------------
-ORG 0 
+; Lê um valor N e exibe: N, N-1, N-2, ... 0
+; continuamente no visor hexadecimal.
+;---------------------------------------------------
+ORG 0
+; --- Aguarda valor pronto no painel de chaves ---
 STATUS1:
-        IN   01               ; Verifica se o valor está pronto
-        ADD  ZERO             ; Soma com o valor 0 
-        JZ   STATUS1          ; Enquanto não estiver pronto fica em loop
-        IN   00               ; Lê o primeiro valor
-LOOP:   STA  X                ; Armazena o conteúdo na memória
-        OUT  00               ; Mostra o valor lido no visor 
-        LDA  X                ; Lê o ultimo valor armazenado
-        NOT                   ; Complementa a um
-        SUB  #1               ; Subtrai 
-        JMP  LOOP             ; Em LOOP para sempre
-        END STATUS1           ; Termina o código
+        IN   1              ; Verifica se há valor disponível
+        AND  #1             ; Testa bit de status
+        JZ   STATUS1        ; Aguarda enquanto não estiver pronto
 
-        ORG 100
-X:      DS  1
-ZERO:   DB  0
+        IN   0              ; Lê o valor N das chaves
+; --- Loop: exibe e decrementa ---
+LOOP:   STA  X              ; Guarda o valor atual
+        OUT  0              ; Exibe no visor
+        LDA  X              ; Recarrega
+        SUB  #1             ; Decrementa
+        JP   LOOP           ; Repete até 0
+        HLT
+        END  STATUS1
+
+ORG 100
+X:      DS  1               ; Variável auxiliar

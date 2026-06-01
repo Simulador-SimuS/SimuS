@@ -1,30 +1,36 @@
 ;---------------------------------------------------
-; Programa: Contagem regressiva manual
+; Programa: Contagem regressiva manual controlada
+;           pelo painel de chaves
 ; Autor: Gabriel P. Silva
 ; Data: 15.09.2003
-; Lê o valor das teclas e depois espera a tecla 
-; "Entra" ser acionada para decrementar o 
-; valor do visor.
+; Arquivo: contagem_regressiva_manual.asm
 ;---------------------------------------------------
-ORG 0 
+; 1. Coloque o valor inicial nas chaves e pressione ENTER
+; 2. A cada pressionamento de ENTER o visor decrementa
+;---------------------------------------------------
+ORG 0
+; --- Lê o valor inicial ---
 STATUS1:
-        IN   01               ; Verifica se o valor está pronto
-        ADD  #0               ; Soma com o valor 0 
-        JZ   STATUS1          ; Enquanto não estiver pronto fica em loop
-        IN   00               ; Lê o primeiro valor
-        STA  X                ; Armazena o conteúdo na memória
-        OUT  00               ; Mostra o valor lido no visor 
-STATUS2:
-        IN 01
-        ADD  #0               ; Soma com o valor 0
-        JZ   STATUS2          ; Enquanto não estiver pronto fica em loop 
-        LDA  X                ; Lê o ultimo valor armazenado
-        SUB  #1               ; Subtrai de um 
-        STA  X                ; Armazena
-        OUT  00               ; Coloca o resultado no visor
-        IN   00               ; Descarta o valor do teclado
-        JMP STATUS2           ; Em LOOP para sempre
-        END STATUS1           ; Termina o código
+        IN   1              ; Verifica se há valor disponível
+        AND  #1             ; Testa bit de status
+        JZ   STATUS1        ; Aguarda
+        IN   0              ; Lê o valor das chaves
+        STA  X              ; Guarda em X
+        OUT  0              ; Exibe no visor
 
-        ORG 100
+; --- A cada ENTER decrementa e exibe ---
+STATUS2:
+        IN   1
+        AND  #1
+        JZ   STATUS2        ; Aguarda próximo ENTER
+        LDA  X              ; Lê o valor atual
+        SUB  #1             ; Decrementa
+        STA  X              ; Guarda de volta
+        OUT  0              ; Exibe no visor
+        IN   0              ; Descarta o valor do painel
+        JNZ   STATUS2       ; Repete
+        HLT
+        END  STATUS1
+
+ORG 100
 X:      DS  1

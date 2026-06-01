@@ -1,33 +1,37 @@
 ;---------------------------------------------------
-; Programa: Calcula a soma de 1 a N (lido das chaves)
+; Programa: Calcula a soma de 1 até N
+;           onde N é lido do painel de chaves
 ; Autor: Antonio Borges
 ; Data: 30/07/2023
 ; Arquivo: soma_1_n.asm
 ;---------------------------------------------------
+; Calcula: SOMA = N + (N-1) + (N-2) + ... + 1
+; Algoritmo: começa com SOMA = N, decrementa N e
+; acumula até N = 0.
+;---------------------------------------------------
           ORG     0
 INICIO:
-          IN      STATUS   ; espera status bit 1 ligado
-          AND     #1
-          JZ      INICIO
+          IN      STATUS      ; Aguarda dado disponível
+          AND     #1          ; Testa bit de status
+          JZ      INICIO      ; Repete enquanto não estiver pronto
 
-          IN      CHAVES   ; n, soma = in(chaves)  
-          STA     N          
-          STA     SOMA   
+          IN      CHAVES      ; Lê N das chaves
+          STA     N           ; N = valor lido
+          STA     SOMA        ; SOMA começa com N
 
-LOOP:                      ; início do loop 
-          LDA     N        ; n = n - 1
+LOOP:     LDA     N           ; N = N - 1
           SUB     #1
-          STA     N 
-          JZ      FIM_LOOP ; se n chegar a zero sai do loop 
-          ADD     SOMA     ; soma = soma + n 
+          STA     N
+          JZ      FIM_LOOP    ; Se N = 0, termina
+          ADD     SOMA        ; SOMA = SOMA + N
           STA     SOMA
-          JMP     LOOP     ; repete loop
-FIM_LOOP:
-          LDA     SOMA     ; out (visor, soma) 
+          JMP     LOOP
+
+FIM_LOOP: LDA     SOMA        ; Exibe a soma no visor
           OUT     VISOR
-          HLT              ; termina
-;---Declaração das variáveis----------------
-SOMA:     DS      1            
+          HLT
+;--- Variáveis ---
+SOMA:     DS      1
 N:        DS      1
 CHAVES    EQU     0
 STATUS    EQU     1

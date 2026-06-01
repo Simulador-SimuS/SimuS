@@ -1,64 +1,84 @@
 ;---------------------------------------------------
-; Programa: Testa a rotina de impressão no banner
-; Autor: Gabriel P. Silva e Antono Borges
+; Programa: Imprime duas cadeias no banner usando
+;           uma subrotina com parâmetro na pilha
+; Autor: Gabriel P. Silva e Antonio Borges
 ; Arquivo: rotina_banner.asm
 ; Data: 13/08/2023
 ;---------------------------------------------------
-ORG 200         ; Variáveis do programa principal
-STR_PRIMEIRA: STR "Rotina para impressão"
-             DB  0
-STR_SEGUNDA: STR "Este é outra cadeia"
-             DB  0
-PT_PRIMEIRA: DW STR_PRIMEIRA
-PT_SEGUNDA:  DW STR_SEGUNDA
-
+; A subrotina ROTINA recebe na pilha o endereço
+; de uma string terminada em NULL e a imprime no
+; banner caractere a caractere.
+;
+; Convenção de chamada (endereço de 16 bits):
+;   PUSH parte alta do endereço
+;   PUSH parte baixa do endereço
+;   JSR  ROTINA
+;---------------------------------------------------
+ORG 200
+STR_PRIMEIRA: STR  "Rotina para impressao"
+              DB   0
+STR_SEGUNDA:  STR  "Esta e outra cadeia"
+              DB   0
+PT_PRIMEIRA:  DW   STR_PRIMEIRA
+PT_SEGUNDA:   DW   STR_SEGUNDA
 
 ORG 100
-INICIO:            
-    LDA  PT_PRIMEIRA+1  ; Coloca o endereço para primeira
-    PUSH                ; cadeia na pilha
+INICIO:
+    LDA  PT_PRIMEIRA+1  ; Empilha endereço da primeira cadeia
+    PUSH                ; (parte alta primeiro)
     LDA  PT_PRIMEIRA
     PUSH
-    JSR  ROTINA
-    LDA  PT_SEGUNDA     ; Coloca o endereço da segunda 
-    PUSH                ; cadeia na pilha
-    LDA  PT_SEGUNDA+1
-    JSR  ROTINA
+    JSR  ROTINA         ; Imprime primeira cadeia
+
+    LDA  PT_SEGUNDA+1   ; Empilha endereço da segunda cadeia
+    PUSH
+    LDA  PT_SEGUNDA
+    PUSH
+    JSR  ROTINA         ; Imprime segunda cadeia
     HLT
-    END INICIO
-;-------------------------------------------
-; Rotina para impressão de uma cadeia no banner
-; Declaração das variáveis da rotina
-;-------------------------------------------
+    END  INICIO
+
+;---------------------------------------------------
+; Subrotina ROTINA
+; Parâmetro: endereço de uma string (2 bytes na pilha)
+; Imprime a string no banner até encontrar NULL.
+;---------------------------------------------------
 ORG 300
-RA:     DW  0    ; Guarda o valor do endereço de retorno
-PTR:    DW  0    ; Ponteiro com o endereço da string a ser impressa
-; Constantes de acesso de E/S
-CLEARB  EQU 3
-BANNER  EQU 2
-;-------------------------------------------
+RA:     DW  0           ; Endereço de retorno (salvo aqui)
+PTR:    DW  0           ; Ponteiro para a string
+
+CLEARB  EQU 3           ; Porta OUT para limpar o banner
+BANNER  EQU 2           ; Porta OUT para escrever no banner
+
 ROTINA:
-    POP          ; Salva o endereço de retorno
-    STA  RA      ; parte baixa
-    POP   
-    STA  RA+1    ; parte alta
-    POP          ; Tira a parte baixa do endereço da string da pilha
-    STA  PTR     ; Salva na parte baixa do ponteiro
-    POP          ; Tira a parte alta do endereço da string da pilha
-    STA  PTR+1   ; Salva na parte alta do ponteiro
-    OUT  CLEARB  ; Limpa o Banner
+    POP          ; Retira parte baixa do endereço de retorno
+    STA  RA
+    POP
+    STA  RA+1    ; Retira parte alta do endereço de retorno
+
+    POP          ; Retira parte baixa do endereço da string
+    STA  PTR
+    POP
+    STA  PTR+1   ; Retira parte alta do endereço da string
+
+    OUT  CLEARB  ; Limpa o banner antes de escrever
+
 LOOP:
-    LDA  @PTR    ; Le o caractere
+    LDA  @PTR    ; Lê o próximo caractere
     OR   #0      ; É NULL?
-    JZ   RETORNA ; Se for retorna
-    OUT  BANNER  ; Imprime o caractere no banner
-    LDA  PTR     ; Incrementa o ponteiro
+    JZ   RETORNA ; Se sim, termina
+    OUT  BANNER  ; Senão imprime no banner
+    LDA  PTR     ; Avança o ponteiro
     ADD  #1
     STA  PTR
-    JMP  LOOP    ; Volta para o inicio
+    LDA  PTR+1
+    ADC  #0
+    STA  PTR+1
+    JMP  LOOP
+
 RETORNA:
-    LDA RA+1     ; Recoloca o endereço de retorno na pilha
-    PUSH 
-    LDA RA       ; Na ordem inversa em que foi retirado
+    LDA  RA+1    ; Restaura o endereço de retorno na pilha
     PUSH
-    RET          ; Retorna
+    LDA  RA
+    PUSH
+    RET
